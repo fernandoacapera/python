@@ -1,0 +1,48 @@
+from random import randint
+from time import sleep
+itens = ('Pedra', 'Papel', 'Tesoura')
+computador = randint(0, 2)
+print("""Escolha uma das opções:
+    [ 0 ] Pedra
+    [ 1 ] Papel
+    [ 2 ] Tesoura """)
+jogador = int(input('Sua jogada: '))
+print('\033[35mJO \033[m')
+sleep(1)
+print('\033[34mKEN\033[m')
+sleep(1)
+print('\033[33mPO ! \033[m')
+sleep(1)
+print('-=-' * 10)
+print(f'O JOGADOR ESCOLHEU: {itens[jogador]}')
+print(f'O COMPUTADOR ESCOLHEU: {itens[computador]}')
+print('-=-' * 10)
+if computador == 0:
+  if jogador == 0:
+    print('EMPATE')
+  elif jogador == 1:
+    print('JOGADOR GANHOU')
+  elif jogador == 2:
+    print('COMPUTADOR GANHOU')
+  else:
+    print('COLOQUE UMA OPÇÃO VÁLIDA !')
+elif computador == 1:
+   if jogador == 0:
+     print('COMPUTADOR GANHOU')
+   elif jogador == 1:
+     print('EMPATE')
+   elif jogador == 2:
+     print('JOGADOR GANHOU')
+   else:
+     print("COLOQUE UMA OPÇÃO VÁLIDA !")
+elif computador == 2:
+  if jogador == 0:
+    print('JOGADOR GANHOU')
+  elif jogador == 1:
+    print('COMPUTADOR GANHOU')
+  elif jogador ==2:
+    print('EMPATE')
+  else:
+    print('COLOQUE UMA OPÇÃO VÁLIDA !')
+else:
+  print('COLOQUE UMA OPÇÃO VÁLIDA !')
