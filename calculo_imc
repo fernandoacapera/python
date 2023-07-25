@@ -1,0 +1,14 @@
+peso = float(input('Diga seu peso (kg): '))
+altura = float(input('Digite sua altura (m): '))
+formula = peso / (altura ** 2)
+print(f'O IMC dessa pessoa é: {formula:.1f}')
+if formula < 18.5:
+    print('Abaixo do peso')
+elif formula >= 18.5 and formula < 25:
+    print('Peso Ideal')
+elif formula >= 25 and formula <30:
+    print('Sobrepeso')
+elif formula >= 30 and formula < 40:
+    print('Obesidade')
+else:
+    print('Obesidade Mórbida')
