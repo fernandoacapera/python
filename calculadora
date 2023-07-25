@@ -1,0 +1,58 @@
+def soma():
+    x = float(input('Digite um valor: '))
+    y = float(input('Digite outro valor: '))
+    print('-'*30)
+    z = x + y
+    print(f'Soma: {z}')
+def subtracao():
+    x = float(input('Digite um valor: '))
+    y = float(input('Digite outro valor: '))
+    print('-'*30)
+    z = x - y
+    print(f'Subtração: {z}')
+def multiplicacao():
+    x = float(input('Digite um valor: '))
+    y = float(input('Digite outro valor: '))
+    print('-'*30)
+    z = x * y
+    print(f'Multiplicação: {z:.2f}')
+def divisao():
+    x = float(input('Digite um valor: '))
+    y = float(input('Digite outro valor: '))
+    print('-'*30)
+    z = x / y
+    print(f'Divisão: {z:.2f} ')
+def raiz4():
+    x = float(input('Digite o valor: '))
+    print('-'*30)
+    z = (x ** (1/2))
+    print(f'Raiz quadrada: {z}')
+def potencia():
+    x = float(input('Digite um valor: '))
+    y = float(input('Digite o expoente: '))
+    print('-'*30)
+    z = x ** y
+    print(f'Potênciação: {z:.2f}\n')
+conta = 1
+while conta:
+    print('Calculadora')
+    print('00.Sair')
+    print('01.Soma')
+    print('02.Subtração')
+    print('03.Multiplicação')
+    print('04.Divisão')
+    print('05.Raiz quadrada')
+    print('06.Potênciação')
+    conta = int(input('Opção: '))
+    if(conta==1):
+        soma()
+    if(conta==2):
+        subtracao()
+    if(conta==3):
+        multiplicacao()
+    if(conta==4):
+        divisao()
+    if(conta==5):
+        raiz4()
+    if(conta==6):
+        potencia()
