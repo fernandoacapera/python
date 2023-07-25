@@ -1,0 +1,17 @@
+print('=====FERNANDO LOJA=====')
+compra = float(input('Preco das compras: R$ '))
+print("""FORMAS DE PAGAMENTO
+    [ 1 ] à vista dinheiro/cheque
+    [ 2 ] à vista cartão
+    [ 3 ] 2x no cartão 
+    [ 4 ] 3x ou mais no cartão""")
+pagamento = (int(input('Qual é a opção? ')))
+if pagamento == 1:
+    print(f'Sua compra de R$ {compra} vai custar R${compra - (compra * 10 / 100)}')
+elif pagamento == 2:
+    print(f'Sua compra de R$ {compra} vai custar R$ {compra - (compra * 10 / 100)}')
+elif pagamento == 3:
+    print(f'Você pagará R$ {compra / 2} por 2 meses')
+elif pagamento == 4:
+    parcela = int(input('Quantas parcelas? '))
+    print(f'Sua compra será parcelada em {parcela}x de R$ {compra + (compra * 20 / 100)}')
