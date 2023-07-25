@@ -1,0 +1,11 @@
+import random
+numero_certo = random.randint(0, 5)
+jogador = int(input('Descubra o número correto: '))
+if jogador == numero_certo:
+    print('-=-' * 10)
+    print('Parabéns, você acertou!')
+    print('-=-' * 10)
+else:
+    print('-=-' * 11)
+    print(f'Você errou, o numero correto é {numero_certo}.\n')
+    print('-=-' * 11)
