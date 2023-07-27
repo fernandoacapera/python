@@ -1,0 +1,3 @@
+tabuada = int(input('Digite o numero para ver sua tabuada: '))
+for t in range(1,10):
+    print(f'{tabuada} x {t} = {tabuada * t}')
