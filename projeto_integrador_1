@@ -1,0 +1,43 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+#Gráfico de Linha
+dados = pd.read_csv("ds_salaries.csv")
+plt.xlabel("Salário Anual")
+plt.ylabel("Anos")
+linha = dados.groupby('work_year').mean()['salary_in_usd'].round(2)
+linha.plot.line(marker = 'o')
+plt.title('Média Anual na Área de Ciência de Dados Entre 2020 à 2023')
+plt.grid(True)
+plt.show()
+
+#Gráfico de Barra
+valor = dados['experience_level'].value_counts()
+valor.plot.bar()
+plt.xlabel('Anos')
+plt.ylabel('Profissionais')
+plt.title('Quantidade de Profissionais')
+plt.xticks(rotation = 0)
+plt.show()
+
+#Gráfico Histrograma
+histograma = sns.histplot(x='salary_in_usd',data = dados)
+histograma.set(title = 'Renda Anual Entre 2020 e 2023')
+plt.xlabel('Salário')
+plt.ylabel(' ')
+plt.figure(figsize = (10,6))
+
+#Boxplot
+boxplot = sns.boxplot(x = 'company_size', y ='salary_in_usd', data = dados)
+plt.ylabel("Salário Anual")
+plt.xlabel('Empresas')
+plt.figure(figsize=(10, 10))
+
+#Gráfico de Temperatura
+df = pd.DataFrame(dados.groupby('employment_type').mean()['salary_in_usd'].round(2))
+sns.heatmap(df, annot= True)
+plt.xlabel('')
+plt.ylabel('')
+plt.show()
