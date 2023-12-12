@@ -1,0 +1,414 @@
+def calcular_imc(peso, altura):
+    return peso / (altura * altura)
+
+def calcular_hidratacao(peso):
+    return (peso * 35) / 1000
+
+def exibir_informacoes(peso, altura):
+    formula_imc = calcular_imc(peso, altura)
+    formula_agua = calcular_hidratacao(peso)
+    print(f'Você deve beber cerca de {formula_agua:.2f} litros de água por dia!')
+    print(f'Seu Índice de Massa Corporal (IMC) atual é: {formula_imc:.2f}!')
+
+def exibir_opcoes_dieta(objetivo, restricao):
+    if restricao == 2:  # Sem restrição
+        if objetivo == 1:  # Perder peso sem restrição
+            exibir_dieta_perda_peso_sem_restricao()
+        elif objetivo == 2:  # Ganhar massa muscular sem restrição
+            exibir_dieta_ganho_massa_muscular_sem_restricao()
+        elif objetivo == 3:  # Manter peso sem restrição
+            exibir_dieta_manutencao_sem_restricao()
+    elif restricao == 1:  # Com restrição
+        tipo_restricao = int(input("""
+        Qual seria sua restrição alimentar?
+        1. Diabetes
+        2. Sensibilidade ou Intolerância Ao Glúten
+        3. Vegetarianismo, Veganismo e Vertentes
+        4. Intolerância à Lactose.
+        """))
+        if tipo_restricao == 1:  # Diabetes
+            exibir_dieta_diabetes()
+        elif tipo_restricao == 2:  # Sensibilidade ou Intolerância Ao Glúten
+            exibir_dieta_gluten()
+        elif tipo_restricao == 3:  # Vegetarianismo, Veganismo e Vertentes
+            exibir_dieta_vegetarianismo()
+        elif tipo_restricao == 4:  # Intolerância á Lactose
+            exibir_dieta_lactose()
+
+def exibir_dieta_perda_peso_sem_restricao():
+    print('\033[1m OPÇÃO 1 \033[0m')
+    print("""
+    Café da Manhã:
+    Aveia (100g) - 68 cal
+    Leite Desnatado (250ml) - 83 calorias
+    Maçã (1 unidade) - 52 cal
+
+    Almoço:
+    Frango Grelhado (150g) - 219 calorias
+    Quinoa Cozida (200g) - 180 calorias
+    Brócolis (100g) - 55 calorias
+
+    Lanche da Tarde:
+    Iogurte Grego Natural (150g) - 98 calorias
+    Amêndoas (30g) - 173 calorias
+
+    Jantar:
+    Salmão Grelhado (150g) - 206 calorias
+    Espinafre Cozido (100g) - 23 calorias
+    Batata Doce Cozida (150g) - 112 calorias
+
+    Total de Calorias: 1262 calorias
+    """)
+
+    print('\033[1m OPÇÃO 2 \033[0m')
+    print("""
+    Café da manhã:
+    Omelete de claras de ovos (2 unidades) com espinafre – 150 calorias
+    Toranja (1 unidade) – 52 calorias
+
+    Almoço:
+    Peito de frango grelhado (150g) – 165 calorias
+    Quinoa cozida (150g) – 180 calorias
+    Abobrinha grelhada (100g) – 19 calorias
+
+    Lanche da tarde:
+    Iogurte Grego natural sem adição de açúcar (150g) – 100 calorias
+    Morangos (100g) – 32 calorias
+
+    Jantar:
+    Salmão assado (150g) – 206 calorias
+    Brócolis cozidos (100g) – 55 calorias
+    Batata doce cozida (150g) – 112 calorias
+
+    Total de Calorias: 1071 calorias
+    """)
+
+def exibir_dieta_ganho_massa_muscular_sem_restricao():
+    print('\033[1m OPÇÃO 1 \033[0m')
+    print("""
+    Café da Manhã:
+    Ovos mexidos (3 unidades) - 234 calorias
+    Aveia cozida (100g) - 68 calorias
+    Banana (1 unidade) - 105 calorias
+
+    Lanche da Manhã:
+    Iogurte Grego Natural (200g) - 130 calorias
+    Mel (1 colher de sopa) - 64 calorias
+
+    Almoço:
+    Peito de frango grelhado (200g) - 260 calorias
+    Arroz integral cozido (1 xícara) - 218 calorias
+    Brócolis cozidos no vapor (100g) - 55 calorias
+
+    Lanche da Tarde:
+    Batata doce cozida (150g) - 112 calorias
+    Amêndoas (30g) - 173 calorias
+
+    Jantar:
+    Salmão grelhado (200g) - 412 calorias
+    Quinoa cozida (1 xícara) - 222 calorias
+    Espinafre refogado (100g) - 23 calorias
+
+    Total de Calorias: 1855 calorias
+    """)
+
+    print('\033[1m OPÇÃO 2 \033[0m')
+    print("""
+    Café da Manhã:
+    Shake de proteína com leite (300ml), banana (1 unidade) e aveia (30g) - 400 calorias
+
+    Lanche da Manhã:
+    Amêndoas (50g) - 290 calorias
+
+    Almoço:
+    Frango grelhado (200g) - 260 calorias
+    Batata-doce assada (150g) - 112 calorias
+    Aspargos cozidos (100g) - 27 calorias
+
+    Lanche da Tarde:
+    Iogurte Grego Natural (200g) - 130 calorias
+    Mel (1 colher de sopa) - 64 calorias
+
+    Jantar:
+    Bife magro (200g) - 400 calorias
+    Quinoa cozida (1 xícara) - 222 calorias
+    Abóbora assada (150g) - 60 calorias
+
+    Total de Calorias: 1945 calorias
+    """)
+
+def exibir_dieta_manutencao_sem_restricao():
+    print('\033[1m OPÇÃO 1 \033[0m')
+    print("""
+    Café da Manhã:
+    Omelete com ovos (2 unidades), tomate (1 unidade) e espinafre (50g) - 250 calorias
+    Pão integral (2 fatias) - 160 calorias
+    Abacate (1/2 unidade) - 120 calorias
+
+    Lanche da Manhã:
+    Iogurte Grego Natural (150g) - 98 calorias
+    Morangos (100g) - 32 calorias
+
+    Almoço:
+    Peito de frango grelhado (150g) - 219 calorias
+    Quinoa cozida (1 xícara) - 222 calorias
+    Salada verde com azeite de oliva (100g) - 120 calorias
+
+    Lanche da Tarde:
+    Batata doce cozida (150g) - 112 calorias
+    Amêndoas (30g) - 173 calorias
+
+    Jantar:
+    Salmão grelhado (150g) - 206 calorias
+    Arroz integral cozido (1 xícara) - 218 calorias
+    Aspargos cozidos (100g) - 27 calorias
+
+    Total de Calorias: 1847 calorias
+    """)
+
+    print('\033[1m OPÇÃO 2 \033[0m')
+    print("""
+    Café da Manhã:
+    Aveia cozida (100g) - 68 calorias
+    Leite Desnatado (250ml) - 83 calorias
+    Maçã (1 unidade) - 52 calorias
+
+    Lanche da Manhã:
+    Iogurte Grego Natural (150g) - 98 calorias
+    Amêndoas (30g) - 173 calorias
+
+    Almoço:
+    Frango Grelhado (150g) - 219 calorias
+    Quinoa Cozida (200g) - 180 calorias
+    Brócolis (100g) - 55 calorias
+
+    Lanche da Tarde:
+    Iogurte Grego Natural (150g) - 98 calorias
+    Morangos (100g) - 32 calorias
+
+    Jantar:
+    Salmão Grelhado (150g) - 206 calorias
+    Espinafre Cozido (100g) - 23 calorias
+    Batata Doce Cozida (150g) - 112 calorias
+
+    Total de Calorias: 1262 calorias
+    """)
+
+def exibir_dieta_diabetes():
+    print('\033[1m OPÇÃO 1 \033[0m')
+    print("""
+    Café da Manhã:
+    Aveia cozida (1 xícara) - 150 calorias
+    Mirtilos (1/2 xícara) - 42 calorias
+    Leite desnatado (1 xícara) - 83 calorias
+
+    Lanche da Manhã:
+    Maçã média (1 unidade) - 95 calorias
+
+    Almoço:
+    Salada de frango grelhado (85g), folhas verdes (2 xícaras), cenoura ralada (1/2 xícara), abacate (1/4) e vinagrete (1 colher de sopa) - 350 calorias
+
+    Lanche da Tarde:
+    Iogurte grego sem gordura (170g) - 100 calorias
+    Nozes (1/4 xícara) - 200 calorias
+
+    Jantar:
+    Filé de salmão grelhado (154g) - 280 calorias
+    Brócolis cozidos no vapor (1 xícara) - 55 calorias
+    Quinoa cozida (1/2 xícara) - 111 calorias
+
+    Total de Calorias: 1566 calorias
+    """)
+
+    print('\033[1m OPÇÃO 2 \033[0m')
+    print("""
+    Café da Manhã:
+    Aveia cozida (1 xícara) com frutas vermelhas (1/2 xícara) - 150 calorias
+    Chá verde sem açúcar (1 xícara) - 2 calorias
+
+    Lanche da Manhã:
+    Maçã média (1 unidade) - 95 calorias
+
+    Almoço:
+    Salada de espinafre (1 xícara) com tomate cereja (1/2 xícara), abacate (1/4), e vinagrete balsâmico (1 colher de sopa) - 150 calorias
+    Sopa de lentilha (1 xícara) - 230 calorias
+
+    Lanche da Tarde:
+    Nozes (1/4 xícara) - 200 calorias
+
+    Jantar:
+    Filé de tofu grelhado (1 unidade) - 80 calorias
+    Quinoa cozida (1/2 xícara) - 110 calorias
+    Brócolis cozidos no vapor (1 xícara) - 55 calorias
+    """)
+
+def exibir_dieta_gluten():
+    print('\033[1m OPÇÃO 1 \033[0m')
+    print("""
+    Café da manhã:
+    Omelete de legumes feita com ovos (217g) - 119,60 calorias
+    Suco de frutas naturais (200ml) - 61 calorias
+
+    Almoço:
+    Arroz (100g) - 130 calorias
+    Feijão preto (100g) - 77 calorias
+    Peixe grelhado (100g) - 109 calorias
+    Salada de alface, tomate e pepino (146g) - 52,73 calorias
+
+    Jantar:
+    Sopa de legumes com quinoa (250g) - 200 calorias
+
+    Total de calorias: 749,33 calorias
+    """)
+
+    print('\033[1m OPÇÃO 2 \033[0m')
+    print("""
+    Café da manhã:
+    Vitamina de frutas com aveia (300ml) - 150 calorias
+
+    Almoço:
+    Quinoa com legumes (100g) - 120 calorias
+    Frango grelhado (100g) - 165 calorias
+    Salada verde (100g) - 25 calorias
+
+    Jantar:
+    Sopa de abóbora com gengibre (250g) - 80 calorias
+
+    Total de calorias: 540 calorias
+    """)
+
+def exibir_dieta_vegetarianismo():
+    print('\033[1m OPÇÃO 1 \033[0m')
+    print("""
+    Café da manhã:
+    Ovos mexidos (2 unidades) - 234 calorias
+    Abacate (1/2 unidade) - 120 calorias
+    Pão integral (2 fatias) - 160 calorias
+
+    Lanche da Manhã:
+    Iogurte grego natural (200g) - 130 calorias
+    Mel (1 colher de sopa) - 64 calorias
+
+    Almoço:
+    Salada de folhas verdes com tofu grelhado (150g), tomate, pepino, e azeite de oliva (1 colher de sopa) - 350 calorias
+
+    Lanche da Tarde:
+    Batata doce cozida (150g) - 112 calorias
+    Amêndoas (30g) - 173 calorias
+
+    Jantar:
+    Quinoa cozida (1 xícara) - 222 calorias
+    Feijão preto cozido (1/2 xícara) - 114 calorias
+    Legumes grelhados (berinjela, abobrinha, pimentão) - 150 calorias
+
+    Total de Calorias: 1549 calorias
+    """)
+
+    print('\033[1m OPÇÃO 2 \033[0m')
+    print("""
+    Café da manhã:
+    Smoothie de frutas vermelhas (300ml) com leite vegetal - 150 calorias
+
+    Lanche da Manhã:
+    Mix de castanhas (50g) - 290 calorias
+
+    Almoço:
+    Quinoa com legumes (150g) - 180 calorias
+    Grão-de-bico cozido (1/2 xícara) - 134 calorias
+    Abóbora assada (100g) - 60 calorias
+
+    Lanche da Tarde:
+    Iogurte vegetal (200g) - 100 calorias
+    Morangos (100g) - 32 calorias
+
+    Jantar:
+    Tofu grelhado (150g) - 180 calorias
+    Arroz integral cozido (1 xícara) - 218 calorias
+    Brócolis cozidos no vapor (100g) - 55 calorias
+
+    Total de Calorias: 1589 calorias
+    """)
+
+def exibir_dieta_lactose():
+    print('\033[1m OPÇÃO 1 \033[0m')
+    print("""
+    Café da manhã:
+    Aveia cozida (1 xícara) com frutas vermelhas (1/2 xícara) - 150 calorias
+    Leite sem lactose (1 xícara) - 83 calorias
+
+    Lanche da Manhã:
+    Maçã média (1 unidade) - 95 calorias
+
+    Almoço:
+    Peito de frango grelhado (150g) - 219 calorias
+    Quinoa cozida (1 xícara) - 222 calorias
+    Salada verde com azeite de oliva (100g) - 120 calorias
+
+    Lanche da Tarde:
+    Iogurte sem lactose (150g) - 98 calorias
+    Morangos (100g) - 32 calorias
+
+    Jantar:
+    Salmão grelhado (150g) - 206 calorias
+    Arroz integral cozido (1 xícara) - 218 calorias
+    Aspargos cozidos (100g) - 27 calorias
+
+    Total de Calorias: 1160 calorias
+    """)
+
+    print('\033[1m OPÇÃO 2 \033[0m')
+    print("""
+    Café da manhã:
+    Smoothie de frutas tropicais (300ml) com leite de amêndoas - 150 calorias
+
+    Lanche da Manhã:
+    Mix de castanhas sem lactose (50g) - 290 calorias
+
+    Almoço:
+    Risoto de cogumelos com arroz arbóreo (150g) - 300 calorias
+    Peito de frango grelhado (150g) - 219 calorias
+    Brócolis cozidos no vapor (100g) - 55 calorias
+
+    Lanche da Tarde:
+    Iogurte de coco sem lactose (150g) - 120 calorias
+    Morangos (100g) - 32 calorias
+
+    Jantar:
+    Tofu grelhado (150g) - 180 calorias
+    Quinoa cozida (1 xícara) - 222 calorias
+    Abobrinha refogada (100g) - 33 calorias
+
+    Total de Calorias: 1603 calorias
+    """)
+
+def main():
+    print('\033[1m     SISTEMA DE DIETAS     \033[0m')
+    print('Olá! Bem vindo ao Sistema de Dietas!')
+    nome = str(input('Qual é o seu nome? ')).title()
+    print(f'É um prazer te conhecer {nome}. Vamos começar?!')
+    print()
+
+    altura = float(input('Antes de tudo, nos informe sua altura em metros: '))
+    peso = float(input('Agora nos informe seu peso em kg: '))
+    print()
+
+    exibir_informacoes(peso, altura)
+    print()
+
+    objetivo = int(input("""Qual seria seu objetivo?
+    1. Perder Peso
+    2. Ganhar Massa Muscular
+    3. Manutenção
+    """))
+    print()
+
+    restricao = int(input("""Você tem alguma restrição alimentar?
+    1. Sim
+    2. Não
+    """))
+    print()
+
+    exibir_opcoes_dieta(objetivo, restricao)
+
+if __name__ == "__main__":
+    main()
