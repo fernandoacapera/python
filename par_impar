@@ -1,0 +1,9 @@
+try:
+ number = int(input('Digite um número: '))
+ if number == int(number):
+  if number % 2 == 0:
+    print(f'O número {number} é par')
+  elif number % 2 != 0:
+    print(f'O número {number} é impar')
+except ValueError:
+  print('O Valor não é inteiro')
