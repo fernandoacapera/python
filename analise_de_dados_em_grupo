@@ -1,0 +1,31 @@
+maior_de_idade = 0
+homem = 0
+mulher_menor_20 = 0
+while True:
+    print('-----CADASTRO-----')
+    idade = int(input('Idade: '))
+    if idade > 18:
+        maior_de_idade += 1
+    sexo = str(input('Sexo [M/F]: ')).upper().strip()
+    while sexo != 'M' and sexo != 'F':
+        sexo = str(input('Sexo [M/F]: ')).upper().strip()
+        if sexo == 'M' and sexo == 'F':
+            continue
+    if sexo == 'M':
+        homem +=1
+    if sexo == 'F' and idade < 20:
+        mulher_menor_20 +=1
+    pergunta = str(input('Quer continuar? [S/N]: ')).upper().strip()
+    while pergunta != ('S') and pergunta != ('N'):
+        pergunta = str(input('Quer continuar? [S/N]: ')).upper().strip()
+    if pergunta == 'S':
+        continue
+    elif pergunta == 'N':
+        break
+print('===FIM DO PROGRAMA===')
+print(f'Total de pessoas com mais de 18 anos: {maior_de_idade}.')
+print(f'Ao todo temos {homem} homens cadastrados.')
+print(f'E temos {mulher_menor_20} mulheres com menos de 20 anos.')
+
+        
+    
