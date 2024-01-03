@@ -1,0 +1,24 @@
+from time import sleep
+primeiro = int(input('Primeiro termo: '))
+razao = int(input('Razão: '))
+termo = primeiro
+cont = 1
+
+while cont <= 10:
+    print(termo, end= ' → ')
+    termo += razao
+    cont+=1
+print('Pausa\n')
+while True:
+    pergunta = int(input('Quantos termos você quer mostrar a mais? '))
+    for x in range(pergunta):
+        print(termo, end=' → ')
+        cont += 1
+        termo +=razao
+    print('PAUSA\n', end= ' ')
+    if pergunta == 0:
+        print('Finalizando...')
+        sleep(1)
+        print('O programa foi finalizado')
+        break
+print(f'Progressão finalizada com {cont-1} termos mostrados')
