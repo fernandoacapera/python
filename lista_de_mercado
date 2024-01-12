@@ -1,0 +1,35 @@
+lista = []
+
+while True:
+
+    pergunta = str(input('''Selecione uma opção:  
+    [i]nserir [a]pagar [l]istar: ''')).lower()
+
+    if len(pergunta) > 1:
+        print('Digite apenas uma letra.', end= ' ')
+        continue
+        
+    if pergunta == 'i':
+        valor = str(input("Valor: ")).title()
+        lista.append(valor)
+        continue
+
+    if pergunta == 'l':
+        if lista == []:
+            print('Não tem nada para listar')
+        else:
+            for numeros, nomes in enumerate(lista, start=1):
+                print(numeros, nomes)
+            
+    if pergunta == 'a':
+        try:
+            apagar = int(input("Escolha o índice: "))
+            if apagar > len(lista):
+                print('Não foi possível apagar esse índice.')
+            else:
+                del(lista[apagar])
+        except ValueError and IndexError:
+                    print('Não foi possível apagar esse índice.')
+    
+    if pergunta == '0':
+        break
