@@ -1,0 +1,42 @@
+valores = []
+valores_somados = []
+contador = 10
+
+cpf = str(input('Digite seu CPF: '))
+
+try:
+  for numeros in cpf:
+    if numeros != '.' and numeros != '-':
+      valores.append(numeros)
+
+  for x in range(0,9):
+    vezes = int(valores[x]) * contador
+    valores_somados.append(vezes)
+    contador -=1
+
+  total = sum(valores_somados) * 10 % 11
+
+  if total > 9:
+    total = 0
+
+  valores_somados.clear()
+  contador = 11
+
+  for segundo in valores[:10]:
+    vezes2 = int(segundo) * contador
+    valores_somados.append(vezes2)
+    contador -=1
+
+  total1 = sum(valores_somados) * 10 % 11
+
+  if total1 > 9:
+    total = 0
+
+  contador = 0
+  for x in valores[:10]:
+    if str(total) == valores[-2] and str(total1) == valores[-1]:
+      print(f'O CPF {cpf[0]}{cpf[1]}{cpf[2]}.{cpf[3]}{cpf[4]}{cpf[5]}.{cpf[6]}{cpf[7]}{cpf[8]}-{cpf[9]}{cpf[10]} é Válido')
+    else:
+      print(f'O CPF {cpf[0]}{cpf[1]}{cpf[2]}.{cpf[3]}{cpf[4]}{cpf[5]}.{cpf[6]}{cpf[7]}{cpf[8]}-{cpf[9]}{cpf[10]} é Inválido')
+except:
+  print('CPF Inválido')
