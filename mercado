@@ -1,0 +1,98 @@
+produtos = {'Codigo': [],'Nome': [],'Preço': [],'Estoque': []}
+formas_pagamento = ['dinheiro', 'cartão', 'cartao', 'cheque']
+def CadastroProduto():
+    code_produto = 1
+    while True:
+        produtos['Codigo'].append(code_produto)
+        produtos['Nome'].append(input('Digite o nome do produto: ').title())
+        produtos['Preço'].append(float(input('Digite o preço do produto: ')))
+        produtos['Estoque'].append(int(input('Digite a quantidade em estoque do produto: ')))
+        pergunta = int(input('''Deseja adicionar mais produtos?
+1 - Sim
+2 - Não
+'''))
+        if pergunta == 1:
+            code_produto +=1
+            continue
+        break
+CadastroProduto()
+produto_escolhido = []
+quantidade_escolhida = []
+def CadastroCliente():
+    nome= input("Digite o seu nome: ").title()
+    cpf = input("Digite seu CPF: ")
+    while len(cpf) != 11:
+        print('CPF Inválido. Tente novamente')
+        cpf = input("Digite seu CPF: ")
+        continue
+    nasc = input('Digite sua data de nascimento:')
+    while len(nasc) != 8:
+        print("Data de nascimento inválida. Tente novamente")
+        nasc = input('Digite sua data de nascimento:')
+        continue
+    endereco = input("Digite seu endereço: ")
+
+    print('\nCARRINHO DE COMPRAS\n')
+    codigo_escolhido = int(input("Digite o código do produto: "))
+    while codigo_escolhido not in produtos['Codigo']:
+        print("Código Inexistente. Tente Novamente")
+        codigo_escolhido = int(input("Digite o código do produto: "))
+        continue
+    produto_escolhido.append(codigo_escolhido)
+    while True:
+        qntd = int(input(f'''Quantidade diponivel ({produtos['Nome'][codigo_escolhido-1]}): {produtos["Estoque"][codigo_escolhido-1]}
+Quantidade que será retirada: '''))
+        teste = produtos['Estoque'][codigo_escolhido-1] - qntd
+        quantidade_escolhida.append(qntd)
+        if teste < 0:
+            print('\nVocê está tentando uma quantidade indisponivel no estoque. Tente novamente\n')
+            continue
+        produtos['Estoque'][codigo_escolhido-1] = produtos['Estoque'][codigo_escolhido-1] - qntd
+        adicionar = int(input('''Deseja adicionar mais produtos?
+1 - SIM
+2 - NÃO
+'''))
+        if adicionar == 1:
+            codigo_escolhido = int(input("Digite o código do produto: "))
+            while codigo_escolhido not in produtos['Codigo']:
+                print("Código Inexistente. Tente Novamente")
+                codigo_escolhido = int(input("Digite o código do produto: "))
+                continue
+            produto_escolhido.append(codigo_escolhido)
+            continue
+        break
+    while True:
+        forma_pagamento = input('''Qual a forma de pagamento?
+Dinheiro
+Cheque
+Cartão
+''').lower()
+        if forma_pagamento not in formas_pagamento:
+            print('Forma de pagamento inválida. Tente novamente')
+            continue
+        break
+        
+
+
+    return qntd,forma_pagamento,codigo_escolhido,nome,cpf,nasc,endereco
+qntd,pagamento,codigo_escolhido,nome,cpf,nasc,endereco = CadastroCliente()
+def NotaFiscal():
+    cont = 0
+    cont2 = 0
+    total = 0
+    print('\nINFORMAÇÃO DO CLIENTE\n')
+    print(f'Nome: {nome}')
+    print(f'CPF: {cpf}')
+    print(f'Endereço: {endereco}')
+    print('-'*40)
+    for x in produto_escolhido:
+        print(f"{produtos['Codigo'][x-1]} {produtos['Nome'][x-1]} R${produtos['Preço'][x-1]:.2f} {quantidade_escolhida[cont]}x" )
+        cont +=1
+    for calculo in produto_escolhido:
+        conta = produtos['Preço'][calculo-1] * quantidade_escolhida[cont2]
+        cont2 +=1
+        total += conta
+    print('-'*40)
+    print(f'Forma de pagamento: {pagamento.title()}', end = '       ')
+    print(f'TOTAL: R${total:.2f}')
+NotaFiscal()
