@@ -1,0 +1,25 @@
+pergunta = [
+    {
+        'Pergunta': 'Quanto é 10 + 10 * 10 - 10?',
+        'Opções': ['110','90','100'],
+        'Resposta': '100',
+    },
+    {
+        'Pergunta': 'Quanto é 2 + 2?',
+        'Opções': ['2','3','4'],
+        'Resposta': '4',
+    },
+]
+for perguntas in pergunta:
+    cont = 1
+    print(f'\nPergunta: {perguntas['Pergunta']}')
+    print()
+    print('Opções:' )
+    for i in perguntas['Opções']:
+        print(f'{cont}) {i}')
+        cont +=1
+    resposta = input('Qual a resposta? ') 
+    if resposta == perguntas['Resposta']:
+        print('\nCorreto🫡')
+    else:
+        print('\nErrado❌')
