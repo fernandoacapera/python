@@ -1,0 +1,39 @@
+from datetime import datetime
+def entrada():
+    horario = str(input("Horário de entrada (hh:mm): "))
+    return horario
+horario_entrada = entrada() 
+ 
+def entrada_almoco():
+    horario = str(input("Horário de entrada p/ almoço (hh:mm): "))
+    return horario
+horario_entrada_almoco = entrada_almoco()
+
+def saida_almoco():
+    horario = str(input("Horário de saida p/ almoço (hh:mm): "))
+    return horario
+horario_saida_almoco = saida_almoco()
+
+def saida():
+    horario = str(input("Horário de saida (hh:mm): "))
+    return horario
+horario_saida = saida()
+
+horario_entrada = datetime.strptime(horario_entrada, "%H:%M")
+horario_entrada_almoco = datetime.strptime(horario_entrada_almoco, "%H:%M")
+horario_saida_almoco = datetime.strptime(horario_saida_almoco, "%H:%M")
+horario_saida = datetime.strptime(horario_saida, "%H:%M")
+
+def calculo():
+    primeiro_horario = horario_entrada_almoco - horario_entrada
+    segundo_horario = horario_saida - horario_saida_almoco
+
+    total_horas_trabalhadas = primeiro_horario + segundo_horario
+    total_horas = total_horas_trabalhadas.total_seconds() // 3600
+    total_minutos = (total_horas_trabalhadas.total_seconds() % 3600) // 60
+
+    return total_horas_trabalhadas, total_horas,total_minutos
+total,total_horas,total_minutos = calculo()
+
+print(f'\nTotal de horas trabalhadas: {total_horas:.0f} horas')
+input()
