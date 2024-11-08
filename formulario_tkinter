@@ -1,0 +1,57 @@
+import tkinter as tk
+
+DB = []
+
+root = tk.Tk()
+root.geometry("500x300")
+root.title("SYSTEM FERNANDO")
+root.resizable(True, True)
+
+system_label = tk.Label(root, text="CADASTRO", font=("Arial", 12, "bold"))
+system_label.pack(anchor='center', pady=15)
+
+usuario_label = tk.Label(root, text="Usuário", font=("Arial"))
+usuario_label.pack(anchor="center", padx=5)
+usuario_entry = tk.Entry(root, width=30, font=("Arial", 10))
+usuario_entry.pack(anchor="center", padx=5, pady=5)
+
+senha_label = tk.Label(root, text="Senha", font=("Arial"))
+senha_label.pack(anchor='center', padx=5)
+senha_entry = tk.Entry(root, width=30, font=("Arial", 10), show="*")
+senha_entry.pack(anchor='center', padx=5, pady=5)
+
+listbox = tk.Listbox(root, height=2, selectmode="single", font="Arial")
+listbox.pack(anchor='center', pady=10)
+
+for item in ['Masculino', 'Feminino']:
+    listbox.insert(tk.END, item)
+
+def cadastrar_usuario():
+    usuario = usuario_entry.get()
+    senha = senha_entry.get()
+    genero = listbox.get(tk.ACTIVE)  
+
+    if usuario and senha and genero:
+        DB.append({'usuario': usuario, 'senha': senha, 'genero': genero})
+        usuario_entry.delete(0, tk.END)
+        senha_entry.delete(0, tk.END)
+        listbox.select_clear(0, tk.END)
+        mensagem.config(text="Cadastro realizado com sucesso!", fg="green")
+    else:
+        mensagem.config(text="Todos os campos são obrigatórios!", fg="red")
+
+cadastro = tk.Button(root, text='Cadastrar', font=("Arial"), bg="white", fg="black", command=cadastrar_usuario)
+cadastro.pack(anchor='center')
+
+def on_enter(event):
+    return cadastro.config(bg="gray", fg="white")
+def on_leave(event):
+    return cadastro.config(bg="white", fg="black")
+cadastro.bind("<Enter>", on_enter)
+cadastro.bind("<Leave>", on_leave)
+
+mensagem = tk.Label(root, text="", font=("Arial", 10))
+mensagem.pack(anchor="center", pady=10)
+
+root.mainloop()
+print(f'Pessoas Cadastradas:\n',DB)
